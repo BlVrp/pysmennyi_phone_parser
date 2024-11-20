@@ -1,6 +1,8 @@
 [package]
 name = "pysmennyi_phone_parser"
 version = "0.1.0"
+authors = ["Anton Pysmennyi"]
+description = "A library for parsing, validating, and formatting phone numbers. Comes with a useful CLI"
 edition = "2021"
 
 [dependencies]
