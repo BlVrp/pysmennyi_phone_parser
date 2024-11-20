@@ -4,7 +4,7 @@
 #### This small parser will help you with some basic operations regarding the phone numbers. 
 #### This includes:
 <ul>
-    <li> format conversion </li>
+    <li> format conversion (to E.164) </li>
     <li> country codes extraction </li>
     <li> operator extraction </li>
 </ul>

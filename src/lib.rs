@@ -81,3 +81,21 @@ impl Phone {
         Ok(parsed_numbers)
     }
 }
+
+pub fn extract_operator_codes(input: String) -> Result<Vec<String>> {
+    let phones = Phone::from_string(&input)?;
+    let operator_codes = phones
+        .iter()
+        .map(|phone| phone.operator_code.clone())
+        .collect::<Vec<_>>();
+    Ok(operator_codes)
+}
+
+pub fn extract_country_codes(input: String) -> Result<Vec<String>> {
+    let phones = Phone::from_string(&input)?;
+    let country_codes = phones
+        .iter()
+        .map(|phone| phone.country_code.clone())
+        .collect::<Vec<_>>();
+    Ok(country_codes)
+}
