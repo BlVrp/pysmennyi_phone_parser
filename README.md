@@ -107,3 +107,29 @@ output sample:
 1
 8
 ```
+## Grammar explained
+Considering the fact that the project might grow in the future, with more formats adding up, the goal is to make the rules as readable and as maintainable as possible
+That's why some redundancy might be seen here and there.
+Because of that, the following approach is used:
+<br>
+#### For each phone number format there is a meta-rule that describes it
+#### those meta-rules are composed of reusable (somewhat) small rules
+
+### Here are a few examples of phone format rules:
+```
+international_with_spaces = {plus ~ country_code ~ whitespace ~ operator_code ~ local_number_block}
+international_with_braces = {plus ~ country_code ~ whitespace ~ "(" ~ operator_code ~ ")" ~ local_number_block}
+```
+
+as we can see, each of those utilizes smaller rules which repeat themselves:
+```
+whitespace = {" "}
+plus = {"+"}
+double_zero = {"00"}
+operator_code = {ASCII_DIGIT{2,5}}
+country_code = {ASCII_DIGIT{1,3}}
+local_number_block = {group_separator ~ ASCII_DIGIT{5,10}}
+group_separator = {"-" | " "}
+local_number_group = {group_separator ~ ASCII_DIGIT{2,4}}
+```
+
