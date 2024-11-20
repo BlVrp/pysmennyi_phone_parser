@@ -133,3 +133,9 @@ group_separator = {"-" | " "}
 local_number_group = {group_separator ~ ASCII_DIGIT{2,4}}
 ```
 
+
+
+## Licencing
+
+#### don't bother, use as you wish :)
+
