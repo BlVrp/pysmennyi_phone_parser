@@ -1,0 +1,27 @@
+// while some rules are redundant, they are kept for clarity and maintainablity.
+// if this project goes further, there might be new phone number formats added.
+// creating a universal set of rules will result in huge rules and unclear code.
+
+phone_number = {international_with_spaces | international_with_braces | international_grouped | international_double_zero_grouped_with_braces}
+
+international_with_spaces = {plus~country_code~whitespace~operator_code~whitespace~local_number_block}
+
+international_with_braces = {plus~country_code~whitespace~"("operator_code")"~whitespace~local_number_block}
+
+international_grouped = {plus~country_code~whitespace~operator_code~local_number_group+}
+
+international_double_zero_grouped_with_braces = {double_zero~country_code~whitespace~"("operator_code")"~local_number_group{1,3}}
+
+
+// universal components
+whitespace = {" "}
+plus = {"+"}
+double_zero = {"00"}
+operator_code = {ASCII_DIGIT{2,5}}
+country_code = {ASCII_DIGIT{1,3}}
+area_code = {ASCII_DIGIT{1,4}}
+local_number_block = {ASCII_DIGIT{4,10}}
+group_separator = {"-" | " "}
+local_number_group = {group_separator~ASCII_DIGIT{1,4}}
+
+

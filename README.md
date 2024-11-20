@@ -6,7 +6,7 @@
 <ul>
     <li> format conversion </li>
     <li> country codes extraction </li>
-    <li> country codes-based filtering </li>
+    <li> operator extraction </li>
 </ul>
 
 #### Here are currently supported phone number formats: 
