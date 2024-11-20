@@ -99,3 +99,17 @@ pub fn extract_country_codes(input: String) -> Result<Vec<String>> {
         .collect::<Vec<_>>();
     Ok(country_codes)
 }
+
+pub fn convert_to_e164(input: String) -> Result<Vec<String>> {
+    let phones = Phone::from_string(&input)?;
+    let e164_numbers = phones
+        .iter()
+        .map(|phone| {
+            format!(
+                "+{}{}{}",
+                phone.country_code, phone.operator_code, phone.local_phone_number
+            )
+        })
+        .collect::<Vec<_>>();
+    Ok(e164_numbers)
+}
